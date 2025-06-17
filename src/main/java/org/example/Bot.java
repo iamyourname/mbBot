@@ -28,15 +28,13 @@ public class Bot extends TelegramLongPollingBot {
         return "7884641664:AAHe0CNzozfsYAhR9IIuPQX0XL9rGNKMGXk";
     }
 
-
-
-
     @Override
     public void onUpdateReceived(Update update) {
         var msg = update.getMessage();
         var user = msg.getFrom();
         var id = user.getId();
         var txt = msg.getText();
+       // String data = update.getCallbackQuery().getData();
         var next = InlineKeyboardButton.builder()
                 .text("Next").callbackData("next")
                 .build();
@@ -69,7 +67,9 @@ public class Bot extends TelegramLongPollingBot {
         }
 
 
-       System.out.println(                user.getUserName() + "(" + user.getId() + "): " + msg.getText()        );
+        System.out.println(
+                user.getUserName() + "(" + user.getId() + "): " + msg.getText()
+        );
     }
         public void sendMenu(Long who, String txt, InlineKeyboardMarkup kb){
             SendMessage sm = SendMessage.builder().chatId(who.toString())
